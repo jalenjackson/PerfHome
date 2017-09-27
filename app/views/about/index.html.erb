@@ -1,0 +1,160 @@
+
+<style>
+  body {
+    background:#cccccc;
+    overflow-x:hidden;
+  }
+</style>
+
+
+<div id="fullpage">
+  <!-- First Page -->
+  <div class="section active" id="section0">
+    <div id="threejs"></div>
+  </div>
+
+  <!-- Page 2 -->
+  <div class="section" id="section1">
+    <div class="slide active">
+      <div style="position: relative;" class="intro">
+
+        <h1 style="color:white;">Slide 2</h1>
+      </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="slide">
+      <div style="position: relative; " class="intro">
+
+        <h1 style="color:white">Slide 3</h1>
+      </div>
+    </div>
+  </div>
+  <div class="section" id="section2">
+    <div class="intro"></div>
+  </div>
+</div>
+
+<script>
+    (function() {
+        var addMesh, animate, camera, clock, container, controls, draw, mesh, renderer, rotate, scene, start;
+
+        scene = void 0;
+
+        camera = void 0;
+
+        renderer = void 0;
+
+        container = void 0;
+
+        controls = void 0;
+
+        clock = void 0;
+
+        mesh = void 0;
+
+        rotate = true;
+
+        start = function() {
+            var ASPECT, FAR, NEAR, SCREEN_HEIGHT, SCREEN_WIDTH, VIEW_ANGLE;
+            scene = new THREE.Scene;
+            VIEW_ANGLE = 45;
+            NEAR = 0.1;
+            FAR = 10000;
+            SCREEN_WIDTH = window.innerWidth;
+            SCREEN_HEIGHT = window.innerHeight;
+            ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT;
+            camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+            camera.position.set(77.82504298529939, 34.02121980722944, 0.02178601347767);
+            camera.rotation.set(-2.4020274682629177, 0.6097939469542306, 2.6601321578044113);
+            camera.lookAt(scene.position);
+            scene.add(camera);
+            renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: true
+            });
+            renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+            container = document.getElementById('threejs');
+            container.appendChild(renderer.domElement);
+            clock = new THREE.Clock;
+        };
+
+
+        var hemiLight, jsonLoader, light;
+
+
+        draw = function() {
+            light = new THREE.DirectionalLight(0x000000, 3);
+            light.position.set(50, 0, -500);
+            light.castShadow = true;
+            scene.add(light);
+            jsonLoader = new THREE.ObjectLoader;
+            return jsonLoader.load('office-threejs/office.json', addMesh);
+        };
+
+
+        var myObj;
+        addMesh = function(object) {
+
+            myObj = object;
+            var materialObj = new THREE.MeshNormalMaterial({
+                vertexColors: THREE.FaceColors,
+                overdraw: 0.5
+            });
+            object.traverse(function(child) {
+                if (child instanceof THREE.Mesh) {
+                    child.geometry.computeVertexNormals;
+                }
+            });
+
+            object.position.set(58,25,0);
+            object.rotateY(10);
+
+            // then directly add the object
+            return scene.add(object);
+        };
+
+        animate = function() {
+            requestAnimationFrame(animate);
+
+
+            if(myObj){
+                myObj.rotation.y += 0.002;
+            }
+
+            return renderer.render(scene, camera);
+        };
+
+        $(".dot-container").click(function(){
+            setTimeout(function(){
+                $(".fixed-nav").toggleClass("show-fixed");
+
+            },300);
+            $("#wrapper").toggleClass("flicker-out");
+            $("#threejs").toggleClass("flicker-out");
+
+        });
+
+
+        start();
+        var delay = 2000; //milliseconds
+        var timeoutId;
+        var animationIsFinished = false;
+
+        draw();
+
+        animate();
+
+    }).call(this);
+
+
+
+    $('#fullpage').fullpage({
+        anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
+        menu: '#menu',
+        css3: true
+    });
+
+
+
+</script>
