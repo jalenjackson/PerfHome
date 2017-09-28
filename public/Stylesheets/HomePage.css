@@ -868,7 +868,6 @@ canvas {
     color:white;
     font-size:40px;
     text-align: center;
-    font-family: "Arial",sans-serif;
     z-index: 999999999999;
     font-weight: 900;
     color:white;
@@ -876,6 +875,8 @@ canvas {
     text-transform: uppercase;
     opacity: 0;
     transform: translateZ(200px);
+    font-family: 'Alegreya Sans SC', sans-serif !important;
+
 
 }
 

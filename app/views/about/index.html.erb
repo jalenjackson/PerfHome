@@ -91,12 +91,17 @@
       width:500px;
       color:white;
       font-weight: 100;
-      font-size: 15px;
       display: block;
+      font-size:15px;
       margin: 0 auto;
       text-align: center;
       font-family: 'Alegreya Sans SC', sans-serif;
       transform: translateY(80px);
+    }
+
+    .why-perf2 p {
+      font-size: 22px !important;
+
     }
 
     .why-perf img {
@@ -108,6 +113,43 @@
       height: 20px;
       cursor: pointer;
     }
+
+
+  .why-perf2 {
+    position: absolute;
+    top:-30px;
+    left: 0;
+    height: 400px;
+    width: 100%;
+    background:black;
+    text-align: center;
+    transition: all 400ms ease-in-out;
+    transform: translateY(100px);
+    opacity: 0;
+    pointer-events: none
+  }
+
+  .why-perf2 p {
+    width:500px;
+    color:white;
+    font-weight: 100;
+    font-size: 22px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    transform: translateY(80px);
+  }
+
+  .why-perf2 img {
+    filter: invert(100%);
+    position: fixed;
+    right: 50px;
+    top:10px;
+    width:20px;
+    height: 20px;
+    cursor: pointer;
+  }
 
     #threejs5 {
       background:black;
@@ -158,6 +200,21 @@
       cursor: pointer;
       transition: all 400ms ease-in-out;
     }
+
+    .why-perf2 {
+      z-index: 999999999999999999999;
+    }
+
+    .why-perf2 img {
+      cursor: pointer;
+      top:50px;
+    }
+
+    #threejs6 {
+      transform: translateY(-150px);
+    }
+
+
 </style>
 
 <%= render 'partials/nav' %>
@@ -169,7 +226,7 @@
     <div id="threejs4"></div>
 
     <div class="about-text">
-      <p style="color:white;"><span style="background:rgba(0,0,0,0.4)">What Is Perfect Presence?</span></p>
+      <p style="color:white;"><span style="background:rgba(0,0,0,0.4);">What Is Perfect Presence?</span></p>
       <button>Learn More</button>
 
       <div class="why-perf">
@@ -195,7 +252,7 @@
             <h1>How Does It Work?</h1>
             <button>Learn More</button>
           </div>
-          <div class="why-perf why-perf2">
+          <div class="why-perf2">
             <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Transparent_X.png"/>
             <p>Creating the Perfect approach to your online Presence is not always easy. Luckily when its with our amazing team the process is extremely simple to make sure while you are making  a new idea or adding on to an existing brand, you can focus on what you want while we take care of all your digital needs.</p>
           </div>
@@ -206,8 +263,11 @@
     <!-- Page 3 -->
     <div class="slide">
       <div style="position: relative; " class="intro">
-
-        <h1 style="color:white">Slide 3</h1>
+        <div id="threejs6"></div>
+        <div class="about-slide2-text">
+          <h1 style="font-weight: 900 !important;">We Want To Make You Successful</h1>
+          <button style="font-weight: 900 !important;">Learn More</button>
+        </div>
       </div>
     </div>
   </div>
@@ -480,6 +540,11 @@
                 })
             },600);
 
+            $(".why-perf2").css({
+                pointerEvents: "auto"
+            });
+
+
 
 
 
@@ -517,6 +582,7 @@
             mesh.rotation.y += 0.002;
 
 
+
             return renderer.render(scene, camera);
         };
 
@@ -533,5 +599,116 @@
 
     }).call(this);
 
+
+</script>
+
+
+
+<script>
+
+    (function() {
+        var addMesh, animate, camera, clock, container, controls, draw, mesh, renderer, rotate, scene, start;
+
+        scene = void 0;
+
+        camera = void 0;
+
+        renderer = void 0;
+
+        container = void 0;
+
+        controls = void 0;
+
+        clock = void 0;
+
+        mesh = void 0;
+
+        rotate = true;
+
+        start = function() {
+            var ASPECT, FAR, NEAR, SCREEN_HEIGHT, SCREEN_WIDTH, VIEW_ANGLE;
+            scene = new THREE.Scene;
+            VIEW_ANGLE = 45;
+            NEAR = 0.1;
+            FAR = 10000;
+            SCREEN_WIDTH = window.innerWidth;
+            SCREEN_HEIGHT = window.innerHeight;
+            ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT;
+            camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+            camera.position.set(77.82504298529939, 34.02121980722944, 0.02178601347767);
+            camera.rotation.set(-2.4020274682629177, 0.6097939469542306, 2.6601321578044113);
+            camera.lookAt(scene.position);
+            scene.add(camera);
+            renderer = new THREE.WebGLRenderer({
+                antialias: true,
+                alpha: true
+            });
+            renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+            container = document.getElementById('threejs6');
+            container.appendChild(renderer.domElement);
+            clock = new THREE.Clock;
+        };
+
+
+        var hemiLight, jsonLoader, light;
+
+
+        draw = function() {
+            light = new THREE.DirectionalLight(0x00ff00, 5);
+            light.position.set(50, 0, -500);
+            light.castShadow = true;
+            scene.add(light);
+            jsonLoader = new THREE.ObjectLoader;
+            return jsonLoader.load('car-concept-threejs/car-concept.json', addMesh);
+        };
+
+
+        var myObj;
+        addMesh = function(object) {
+
+            myObj = object;
+            var materialObj = new THREE.MeshNormalMaterial({
+                vertexColors: THREE.FaceColors,
+                overdraw: 0.5
+            });
+            object.traverse(function(child) {
+                if (child instanceof THREE.Mesh) {
+                    child.geometry.computeVertexNormals;
+                }
+            });
+
+            object.position.set(-400,-200,0);
+
+
+            // then directly add the object
+            return scene.add(object);
+        };
+
+
+
+
+        animate = function() {
+            requestAnimationFrame(animate);
+
+
+            if(myObj){
+                myObj.rotation.y += 0.002;
+            }
+
+            return renderer.render(scene, camera);
+        };
+
+
+
+        start();
+        var delay = 2000; //milliseconds
+        var timeoutId;
+        var animationIsFinished = false;
+
+        draw();
+
+        animate();
+
+    }).call(this);
 
 </script>
