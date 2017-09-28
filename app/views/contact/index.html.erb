@@ -1,5 +1,4 @@
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-<link rel="stylesheet" href="Stylesheets/HomePage.css"/>
 
 <style>
   body{
@@ -295,25 +294,8 @@
 
 
 </style>
-<div class="navbar">
-  <h1>PP</h1>
-  <div class="dot-container">
-    <a href="#" class="dots">
-      <div class="dot"></div>
-    </a>
-  </div>
-</div>
 
-<div class="fixed-nav">
-  <div id="particle-canvas">
-    <div class="inner-fixed-nav">
-      <h1><span onclick="window.location.href = '/'">Home</span></h1>
-      <h1><span>About</span></h1>
-      <h1><span>Services</span></h1>
-      <h1><span>Blog</span></h1>
-    </div>
-  </div>
-</div>
+<%= render 'partials/nav' %>
 
 <div id="webgl"></div>
 
@@ -339,20 +321,7 @@
   </div>
   </div>
 
-  <div class="footer">
-    <p>&copy; Perfect Presence &#8759;</p>
-    <div class="right-text">
-      <ul>
-        <li>Social</li>
-        <li style="font-size:16px;font-weight: 100 !important;">&#8759;</li>
-        <li><img src="https://static1.squarespace.com/static/54b297e1e4b089270ed32a86/54e74d70e4b02db31b39fa08/54e74e97e4b0866feef1025a/1424445173581/twitter-4096-black.png"/></li>
-        <li><img src="https://cdn1.iconfinder.com/data/icons/simple-icons/1024/facebook-1024-black.png"/></li>
-        <li><img src="http://www.iconsdb.com/icons/preview/black/google-plus-xxl.png"/></li>
-        <li style="font-size:16px;font-weight: 100 !important;">&#8759;</li>
-        <li>TOS</li>
-      </ul>
-    </div>
-  </div>
+  <%= render 'partials/footer' %>
 </div>
 
 <script>

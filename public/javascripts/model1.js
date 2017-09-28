@@ -175,15 +175,7 @@
         return renderer.render(scene, camera);
     };
 
-    $(".dot-container").click(function(){
-        setTimeout(function(){
-            $(".fixed-nav").toggleClass("show-fixed");
 
-        },300);
-        $("#wrapper").toggleClass("flicker-out");
-        $("#threejs").toggleClass("flicker-out");
-
-    });
 
 
     start();
