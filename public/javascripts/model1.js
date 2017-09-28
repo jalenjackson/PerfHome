@@ -189,8 +189,8 @@
         afterLoad: function(){
 
             $(".design-line").removeClass("leave").addClass("expand");
-            $(".sign-up-btn").removeClass("flicker-out");
-            $("#wrapper").removeClass("flicker-out");
+            $(".sign-up-btn").removeClass("flicker-out2");
+            $("#wrapper").removeClass("flicker-out2");
 
             if(light){
                 light.color.setHex( 0x00ff00 );
@@ -224,13 +224,13 @@
 
 
             setTimeout(function(){
-                $("#wrapper").addClass("flicker-out");
+                $("#wrapper").addClass("flicker-out2");
 
             },350);
 
             $(".design-line").removeClass("expand").addClass("leave");
 
-            $(".sign-up-btn").addClass("flicker-out");
+            $(".sign-up-btn").addClass("flicker-out2");
 
 
             clearTimeout(timeoutId);

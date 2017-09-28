@@ -581,6 +581,19 @@ canvas {
     transition: all 200ms ease-in-out;
 }
 
+.flicker-out2 {
+    animation: outtie 100ms ease-in-out forwards 4;
+}
+
+@keyframes outtie {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
 
 @keyframes btn {
     0%{

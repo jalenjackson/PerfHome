@@ -4,6 +4,7 @@
 <style>
   body{
     background:black;
+    perspective: 900px;
   }
 
     .slide{
@@ -26,6 +27,31 @@
       text-align: center;
       margin-top:140px;
       cursor: pointer;
+      position: relative;
+    }
+
+    .slide h1::after {
+      content: "";
+      display: block;
+      bottom: 0;
+      position: absolute;
+      width:0%;
+      height: 1px;
+      background:rgba(255,255,255,0.5);
+      animation: after 1s ease-in-out forwards 1 1s;
+    }
+
+    @keyframes after {
+      0%{
+        width: 0;
+      }
+      50%{
+        width: 100%;
+      }
+      100%{
+        right: 0;
+        width: 0%;
+      }
     }
 
     * {
@@ -160,6 +186,19 @@
       width:50px !important;
     }
   }
+
+    .slide {
+      animation: goup 1s ease-in-out forwards 1;
+    }
+
+    @keyframes goup{
+      0%{
+        opacity: 0;
+      }
+      100%{
+        opacity: 1;
+      }
+    }
 
 </style>
 
