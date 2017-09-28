@@ -10,8 +10,11 @@ $(window).on("load", function(){
         $("#threejs3").toggleClass("flicker-out");
         $("#wrapper").toggleClass("flicker-out");
         $(".sign-up-btn").toggleClass("flicker-out");
-         $(".inner-fixed-nav h1").toggleClass("move-down");
-
+        $(".inner-fixed-nav h1").toggleClass("move-down");
+        $(".footer").toggleClass("flicker-out");
     });
+
+
+
 });
 

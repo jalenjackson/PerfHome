@@ -279,6 +279,10 @@
     animation: flicker-nav 100ms ease-in-out 5 forwards;
   }
 
+  .inner-fixed-nav h1 span::after {
+    opacity: 0 !important;
+  }
+
   @keyframes flicker-nav {
     0%{
      opacity: 0;
@@ -292,6 +296,9 @@
       pointer-events: none;
     }
 
+  .inner-fixed-nav h1 {
+    font-size:17px !important;
+  }
 
 </style>
 
@@ -415,10 +422,10 @@
 
     $(".dot-container").click(function(e){
             e.preventDefault();
-            $(".fixed-nav").toggleClass("show-fixed");
             $("form").toggleClass("go-out");
             $(".text-inner p ").toggleClass("go-out");
             $(".text-container").toggleClass("pointers");
+
     });
 
 

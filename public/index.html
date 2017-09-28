@@ -17,24 +17,7 @@
 
         <style>
 
-            .inner-fixed-nav h1 span {
-                transition: all 300ms ease-in-out;
-                position: relative;
-                cursor: pointer;
-            }
 
-            .inner-fixed-nav h1 span:hover {
-                animation: flicker-nav 100ms ease-in-out 5 forwards;
-            }
-
-            @keyframes flicker-nav {
-                0%{
-                    opacity: 0;
-                }
-                100%{
-                    opacity:1;
-                }
-            }
         </style>
         </head>
 
@@ -52,13 +35,15 @@
 
     <!-- Hovered in nav -->
     <div class="fixed-nav">
-            <div class="inner-fixed-nav">
-                <h1><span >Home</span></h1>
-                <h1 style="animation-delay: 0.2s" onclick="window.location.href = '/about'"><span>About</span></h1>
-                <h1 style="animation-delay: 0.4s"><span>Services</span></h1>
-                <h1 style="animation-delay: 0.6s"><span>Blog</span></h1>
-                <h1 style="animation-delay: 0.8s" onclick="window.location.href = '/contact'"><span>Get Started</span></h1>
-            </div>
+        <div class="inner-fixed-nav">
+            <h1 class="nav1"><span onclick="window.location.href = '/'" >Home</span></h1>
+            <h1 class="nav3" onclick="window.location.href = '/portfolio'" ><span>Portfolio</span></h1>
+            <h1 class="nav2"  onclick="window.location.href = '/about'"><span>About</span></h1>
+            <h1 class="nav3" ><span>Services</span></h1>
+
+            <h1 class="nav4" ><span>Blog</span></h1>
+            <h1 class="nav5" onclick="window.location.href = '/contact'"><span>Get Started</span></h1>
+        </div>
     </div>
     <!-- end nav -->
 
@@ -144,9 +129,9 @@
     <div class="navbar">
         <h1>PP</h1>
         <div class="dot-container">
-            <a href="#" class="dots">
-                <div class="dot"></div>
-            </a>
+            <div id="threeLines">
+                <button id="el"></button>
+            </div>
         </div>
     </div>
 
