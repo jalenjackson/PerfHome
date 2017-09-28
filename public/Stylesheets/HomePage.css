@@ -585,6 +585,23 @@ canvas {
     animation: outtie 100ms ease-in-out forwards 4;
 }
 
+.footer-instructions {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: footer 1.1s ease-in-out forwards 1 0.3s;
+}
+
+@keyframes footer {
+    0%{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(2px);
+    }
+}
+
 @keyframes outtie {
     0%{
         opacity: 1;
